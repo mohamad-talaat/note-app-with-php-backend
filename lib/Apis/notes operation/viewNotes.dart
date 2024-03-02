@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/Apis/crud.dart';
@@ -24,10 +23,10 @@ class _viewNotesScreenState extends State<viewNotesScreen> {
   Future viewNotes() async {
     var userId = myServices.sharedPrefer.getString("id");
     var response = await crud.postData(linkViewNotes, {
-      "id": userId ,
-    });
+      "id": userId , 
+    });//جبنا الداتا 
     print('User ID: $userId');
-    return response ;
+    return response ;//عملنالها ريتيرن عشان تطبع ع الشاشه 
   }
 
   deleteNotes(notesId) async {
@@ -35,8 +34,8 @@ class _viewNotesScreenState extends State<viewNotesScreen> {
       "id": notesId.toString(),
     });
     if (response != null && response["status"] == "success") {
-      Get.offAndToNamed('/viewNotesScreen');
-      // الطريقة دي خلت الصفحة تعمل ريفريش بعد ما حذفت الملاحظة
+      Get.offAndToNamed('/viewNotesScreen'); // الطريقة دي خلت الصفحة تعمل ريفريش بعد ما حذفت الملاحظة
+// SetState((){}) // وبرضوا دي يخليها تعمل ريفرش 
       return true;
     } else {
       return false;
